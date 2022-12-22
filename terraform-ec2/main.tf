@@ -6,6 +6,7 @@ resource "aws_instance" "nginx" {
   user_data     = file("${path.module}/install.sh")
   tags = {
     "Name" = "Nginx"
+    "Team" = "Dev"
   }
 
 
