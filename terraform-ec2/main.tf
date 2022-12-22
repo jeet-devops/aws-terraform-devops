@@ -9,6 +9,9 @@ resource "aws_instance" "nginx" {
     "Team" = "Dev"
   }
 
+  security_groups = [
+    "${aws_security_group.allow_http.id}",
+  ]
 
 
 
