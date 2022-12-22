@@ -9,8 +9,13 @@ resource "aws_instance" "nginx" {
     "Team" = "Dev"
   }
   
-  security_groups                      = [
-        "${aws_security_group.allow_http.id}",
+  vpc_security_group_ids  = [
+  
+    "${aws_security_group.allow_http.id}",
+    ]
+
+    depends_on = [
+      aws_security_group.allow_http
     ]
 
 }
