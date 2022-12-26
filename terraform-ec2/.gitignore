@@ -2,6 +2,8 @@
 **/.terraform/*
 .terraform/*
 .terraform/providers/
+.terraform/providers/registry.terraform.io/hashicorp/aws/4.48.0/darwin_arm64/terraform-provider-aws_v4.48.0_x5
+
 
 # .tfstate files
 *.tfstate
