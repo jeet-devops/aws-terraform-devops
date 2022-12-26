@@ -1,4 +1,6 @@
-data "aws_resourcegroupstaggingapi_resources" "test" {}
+data "aws_resourcegroupstaggingapi_resources" "test" {
+    resource_type_filters = ["ec2:instance"]
+}
 
 output "resource_tags" {
 
