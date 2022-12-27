@@ -28,11 +28,11 @@ variable "default_tags" {
 
 variable "server_count" {
   description = "Count of no. of servers"
-  default = 2 
+  default = 1
 }
-
 variable "instance_keypair" {
   description = "AWS key name"
   type = string
   default = "nginx-key"
 }
+

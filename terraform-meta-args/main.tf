@@ -31,19 +31,24 @@ locals {
   
 # }
 
+
+
+
 resource "aws_instance" "nginx" {
 
   ami           = data.aws_ami.ami_name.id
   instance_type = element(var.instance_type,0)
   user_data     = file("${path.module}/install.sh")
   key_name = var.instance_keypair
+ # for_each = toset(data.aws_availability_zones.azs_list.names) # 1st option
 
-  count = var.server_count
+  for_each = { for i, az in data.aws_availability_zones.azs_list.names: i => az } # 2nd option
+  availability_zone = each.value
   
   tags = "${merge(
     local.default_tags,
     tomap({
-      "Name" = "NginxServer-${count.index}"
+      "Name" = "NginxServer-${each.key}-${each.value}"
       }
     )
 

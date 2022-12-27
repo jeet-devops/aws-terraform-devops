@@ -18,6 +18,7 @@ value = { for c, instance in aws_instance.nginx: c => instance.public_dns }
 
 output "aws_instance_tags" {
 description = "Tags of AWS instance"
-value = aws_instance.nginx[*].tags
+value = { for v, web in aws_instance.nginx: v => web.tags}
+
 
 }
